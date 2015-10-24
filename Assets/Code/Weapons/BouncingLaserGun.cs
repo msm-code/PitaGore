@@ -13,7 +13,7 @@ public class BouncingLaserGun : GunBase
 
     public override float ReloadTime { get { return 0.1f; } }
 
-    const int MAX_BOUNCES = 4;
+    const int MAX_BOUNCES = 40;
 
     void SendBouncingRay(Ray ray, int maxBounces)
     {
