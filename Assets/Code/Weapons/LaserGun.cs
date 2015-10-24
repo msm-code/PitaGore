@@ -13,14 +13,14 @@ public class LaserGun : GunBase
 
     public override float ReloadTime { get { return 0.1f; } }
 
-    protected override void SuperrealShot(Ray ray, Vector3 gunPosition)
+    protected override void SuperrealShot(Ray ray)
     {
         Vector3 hitPoint;
         RaycastHit info;
         if (Physics.Raycast(ray, out info))
         {
             hitPoint = info.point;
-            ray = new Ray(gunPosition, hitPoint - gunPosition);
+            ray = new Ray(ray.origin, hitPoint - ray.origin);
             if (Physics.Raycast(ray, out info))
             {
                 if (info.collider == null) { return; }
@@ -53,7 +53,7 @@ public class LaserGun : GunBase
             var bulletTrace = (GameObject)Instantiate(bulletTracePrefab);
             var lineComponent = bulletTrace.GetComponent<LineRenderer>();
             lineComponent.SetVertexCount(2);
-            lineComponent.SetPosition(0, gunPosition);
+            lineComponent.SetPosition(0, ray.origin);
             lineComponent.SetPosition(1, hitPoint);
         }
     }

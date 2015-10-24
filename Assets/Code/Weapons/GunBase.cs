@@ -8,12 +8,24 @@ public abstract class GunBase : WeaponBase
     {
         var camTransform = Camera.main.transform;
         var direction = (camTransform.forward + Random.insideUnitSphere * inaccuracy).normalized;
-        var gunPosition = gameObject.GetComponent<Collider>().transform.TransformPoint(new Vector3(0, 0, 1));
         var startPoint = camTransform.position + camTransform.forward * 0.1f;
         var ray = new Ray(startPoint, direction);
 
-        SuperrealShot(ray, gunPosition);
+        Vector3 hitPoint;
+        RaycastHit info;
+        if (Physics.Raycast(ray, out info))
+        {
+            hitPoint = info.point;
+            ray = new Ray(ray.origin + Vector3.up * -0.5f, hitPoint - ray.origin);
+        }
+        else
+        {
+            ray = new Ray(ray.origin + Vector3.up * -0.5f, ray.direction);
+        }
+
+        ray.origin = ray.origin + ray.direction * 0.5f;
+        SuperrealShot(ray);
     }
 
-    protected abstract void SuperrealShot(Ray ray, Vector3 gunPosition);
+    protected abstract void SuperrealShot(Ray ray);
 }

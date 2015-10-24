@@ -8,8 +8,8 @@ public class BulletGun : GunBase
 
     public override float ReloadTime { get { return 0.1f; } }
 
-    protected override void SuperrealShot(Ray ray, Vector3 gunPosition)
+    protected override void SuperrealShot(Ray ray)
     {
-        Instantiate(bulletPrefab, gunPosition, Quaternion.LookRotation(ray.direction));
+        Instantiate(bulletPrefab, ray.origin, Quaternion.LookRotation(ray.direction));
     }   
 }

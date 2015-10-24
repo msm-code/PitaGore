@@ -75,16 +75,16 @@ public class BouncingLaserGun : GunBase
         }
     }
 
-    protected override void SuperrealShot(Ray ray, Vector3 gunPosition)
+    protected override void SuperrealShot(Ray ray)
     {
         Vector3 hitPoint;
         RaycastHit info;
         if (Physics.Raycast(ray, out info))
         {
             hitPoint = info.point;
-            ray = new Ray(gunPosition, hitPoint - gunPosition);
+            ray = new Ray(ray.origin, hitPoint - ray.origin);
             SendBouncingRay(ray, MAX_BOUNCES);
         }
-        else { ShowBulletTrace(gunPosition, ray.origin + ray.direction * 10000); }
+        else { ShowBulletTrace(ray.origin, ray.origin + ray.direction * 10000); }
     }
 }
