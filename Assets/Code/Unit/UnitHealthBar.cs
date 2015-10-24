@@ -13,7 +13,7 @@ public class UnitHealthBar : MonoBehaviour
             {
                 screenPosition.y = Screen.height - (screenPosition.y + 1);
                 Rect rect = new Rect(screenPosition.x - 50, screenPosition.y - 12, 100, 24);
-                GUI.Box(rect, hp.currentHp + "/" + hp.maxHealth);
+                GUI.Box(rect, (int) hp.currentHp + "/" + hp.maxHealth);
             }
         }
     }
