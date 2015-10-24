@@ -17,7 +17,7 @@ public class WeaponRotator : Rotator
         if (newWeapon is BulletGun)
         {
             BulletGun bullet = newWeapon as BulletGun;
-            collider.gameObject.GetComponent<BulletGun>().bulletPrefab = (currentWeapon as BulletGun).bulletPrefab;
+            collider.gameObject.GetComponent<BulletGun>().bulletPrefab = (weaponPrefab.GetComponent<BulletGun>()).bulletPrefab;
         }
         //</hackaton>
     }
