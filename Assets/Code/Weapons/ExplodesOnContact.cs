@@ -20,7 +20,7 @@ public class ExplodesOnContact : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, Time.deltaTime * motor.motorSpeed + 2f))
         {   
-            Explode(hit.point);
+            Explode(hit.point - transform.forward * 0.1f);
         }
     }
 
