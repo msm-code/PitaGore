@@ -8,7 +8,7 @@ public abstract class GunBase : WeaponBase
     {
         var camTransform = Camera.main.transform;
         var direction = (camTransform.forward + Random.insideUnitSphere * inaccuracy).normalized;
-        var gunPosition = gameObject.GetComponent<Collider>().transform.TransformPoint(new Vector3(0, 0, 0));
+        var gunPosition = gameObject.GetComponent<Collider>().transform.TransformPoint(new Vector3(0, 0, 1));
         var startPoint = camTransform.position + camTransform.forward * 0.1f;
         var ray = new Ray(startPoint, direction);
 

@@ -3,7 +3,6 @@ using System.Collections;
 
 public abstract class Rotator : MonoBehaviour {
 
-	// Use this for initialization
 	void Start () {
         foreach (Collider c in GetComponents<Collider>())
         {
@@ -16,11 +15,11 @@ public abstract class Rotator : MonoBehaviour {
         if (collider.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            Collision();
+            Collision(collider);
         }
     }
 
-    public abstract void Collision();
+    public abstract void Collision(Collider collider);
 
     // Update is called once per frame
     void Update () {

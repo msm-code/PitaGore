@@ -1,10 +1,17 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class LaserGun : GunBase
 {
     public GameObject debrisPrefab;
     public GameObject bulletTracePrefab;
     public GameObject hitPrefab;
+
+    private float damage = 20;
+
+    public override int MaxAmmo { get { return 1000; } }
+
+    public override float ReloadTime { get { return 0.1f; } }
 
     protected override void SuperrealShot(Ray ray, Vector3 gunPosition)
     {
