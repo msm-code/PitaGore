@@ -2,7 +2,7 @@
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    public int ammo;
+    protected int ammo;
     float cooldownRemaining;
 
     public abstract int MaxAmmo { get; }

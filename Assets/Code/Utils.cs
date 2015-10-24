@@ -25,4 +25,12 @@ static class Utils
         var newComponent = gameObject.GetComponent(component.GetType());
         CopyClassValues(component, newComponent);
     }
+
+    public static void WithGuiColor(Color color, Action action)
+    {
+        Color old = GUI.color;
+        GUI.color = color;
+        action();
+        GUI.color = old;
+    }
 }

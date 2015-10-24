@@ -15,13 +15,6 @@ public class EnemySpawner : MonoBehaviour
     private float time;
     private int spawned = 0;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         time += Time.deltaTime;

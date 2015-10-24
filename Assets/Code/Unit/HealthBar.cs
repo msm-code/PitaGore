@@ -1,19 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour {
-	void Update () {
-		var bar = gameObject.GetComponent<GUIText> ();
-		var player = GetPlayer ();
-		if (player == null) { return; }
-		var hp = player.GetComponent<HasHealth> ();
-		var info = hp.currentHp < hp.maxHealth / 2 ? "zaraz nie bedziesz miał życia jak tomek :/" : "";
-		bar.text = string.Format ("{0}/{1} hp {2}", hp.currentHp, hp.maxHealth, info);
-	}
+    public GameObject tracedObject;
 
-	GameObject GetPlayer() {
-		var playerObjs = GameObject.FindGameObjectsWithTag("Player");
-		if (playerObjs.Length == 0) { return null; }
-		return playerObjs[0];
+	void Update () {
+		var bar = gameObject.GetComponent<Text> ();
+		var hp = tracedObject.GetComponent<HasHealth> ();
+		var info = hp.currentHp < hp.maxHealth / 2 ? "nie jest dobrze :/" : "";
+		bar.text = string.Format ("{0}/{1} hp {2}", hp.currentHp, hp.maxHealth, info);
 	}
 }
