@@ -4,9 +4,7 @@ using System.Collections;
 public abstract class PowerUp : MonoBehaviour
 {
 
-    protected abstract void givePower();
-
-
+    public abstract void GivePower(GameObject player);
 
 	// Use this for initialization
 	void Start () {

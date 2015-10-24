@@ -6,7 +6,8 @@ public class WeaponRotator : Rotator
     public GameObject weaponPrefab;
 
     public override void Collision(Collider collider)
-    {
+    {   
+
         var currentWeapon = collider.gameObject.GetComponent<WeaponBase>();
         Destroy(currentWeapon);
 

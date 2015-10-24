@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 using UnityStandardAssets.Utility;
@@ -37,6 +38,15 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jumping;
         private AudioSource m_AudioSource;
         private bool readyForDoubleJump = false;
+        
+        public void AddSpeed(float speed)
+        {
+            this.m_WalkSpeed += speed;
+            this.m_RunSpeed += speed;
+        }
+        
+        
+
 
         private void Start()
         {
@@ -52,8 +62,13 @@ namespace UnityStandardAssets.Characters.FirstPerson
 			m_MouseLook.Init(transform , m_Camera.transform);
         }
 
+
+
         private void Update()
-        {
+        {   
+
+
+            
             RotateView();
             if (!m_Jump)
             {

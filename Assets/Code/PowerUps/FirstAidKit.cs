@@ -3,9 +3,10 @@ using System.Collections;
 
 public class FirstAidKit : PowerUp {
 
-    protected override void givePower()
+    public override void GivePower(GameObject player)
     {
-        var obj = gameObject.tag == "Player";
+        player.GetComponent<HasHealth>().ReceiveHealing(20);
+
     }
 
 

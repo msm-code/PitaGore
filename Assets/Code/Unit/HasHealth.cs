@@ -16,7 +16,16 @@ public class HasHealth : MonoBehaviour {
 		}
 	}
 
-	void Die() {
+    public void ReceiveHealing(float amount) {
+        currentHp += amount;
+        if (currentHp > maxHealth)
+        {
+            currentHp = maxHealth;
+        }
+    }
+
+
+    void Die() {
 		Destroy(gameObject);
 	}
 }

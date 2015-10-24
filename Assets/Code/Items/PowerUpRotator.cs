@@ -5,6 +5,8 @@ public class PowerUpRotator : Rotator {
 
     public override void Collision(Collider collider)
     {
-        print("jestem powerupem");
+        var newPowerUp = gameObject.GetComponent<PowerUp>();
+        var player = collider.gameObject;
+        newPowerUp.GivePower(player);
     }
 }
