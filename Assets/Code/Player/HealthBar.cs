@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour {
 	void Update () {
-		var bar = gameObject.GetComponent<GUIText> ();
+		var bar = gameObject.GetComponent<Text> ();
 		var player = GetPlayer ();
 		if (player == null) { return; }
 		var hp = player.GetComponent<HasHealth> ();
