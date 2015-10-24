@@ -120,7 +120,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     PlayJumpSound();
                     m_Jump = false;
                     m_Jumping = true;
-                    print("pierwszy skok");
                     readyForDoubleJump = true;
 
                 }
@@ -128,7 +127,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
             else if (readyForDoubleJump && m_Jump)
             {
-                print("drugi skok");
                 m_MoveDir.y += m_JumpSpeed;
                 PlayJumpSound();
                 m_Jump = false;
