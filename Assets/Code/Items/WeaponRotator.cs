@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
 
-public class WeaponRotator : Rotator {
+public class WeaponRotator : Rotator
+{
 
     public GameObject weaponPrefab;
 
@@ -13,5 +12,13 @@ public class WeaponRotator : Rotator {
 
         var newWeapon = weaponPrefab.GetComponent<WeaponBase>();
         collider.gameObject.AddExistingComponent(newWeapon);
+
+        //<hackaton mode=on>
+        if (newWeapon is BulletGun)
+        {
+            BulletGun bullet = newWeapon as BulletGun;
+            collider.gameObject.GetComponent<BulletGun>().bulletPrefab = (currentWeapon as BulletGun).bulletPrefab;
+        }
+        //</hackaton>
     }
 }
