@@ -13,6 +13,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void Start()
         {
             hp = gameObject.GetComponent<HasHealth>();
+            base.Start();
         }
 
 

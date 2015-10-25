@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml.Schema;
 using UnityEngine;
 
 namespace UnityStandardAssets.Characters.ThirdPerson
