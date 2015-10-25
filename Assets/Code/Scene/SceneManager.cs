@@ -8,14 +8,14 @@ public class SceneManager : MonoBehaviour
     public bool EndGameExactlyWhenPassed = false;
 
     public bool timeConditionActive = true;
+    public float timeToPass = 0f;
     public bool killedEnemyConditionActive = false;
+    public int enemiesToKill = 0;
     public bool placeConditionActive = false;
     public bool otherConditionAcvite = false;
 
     private float time = 0f;
-    public float timeToPass = 0f;
-    public int enemiesToKill = 0;
-
+    
     public bool oneConditionToAccept = false;
 
     private bool timeConditionPassed = false;
@@ -133,6 +133,7 @@ public class SceneManager : MonoBehaviour
 
     public void playerVisitedPlace()
     {
+        print("Scene manager: place visited");
         this.placeVisited = true;
     }
 
