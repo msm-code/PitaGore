@@ -5,12 +5,8 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(ThirdPersonCharacter))]
-    public class SmallBiterChase : MonoBehaviour
+    public class SmallBiterChase : ChasingBase
     {
-        public NavMeshAgent agent { get; private set; } // the navmesh agent required for the path finding
-        public ThirdPersonCharacter character { get; private set; } // the character we are controlling
-        public Vector3 target; // target to aim for
-        public Transform player;
         float time = 0;
         public NavMeshAgent ch;
 
@@ -18,19 +14,15 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void Start()
         {
             // get the components on the object we need ( should not be null due to require component so no need to check )
-            agent = GetComponentInChildren<NavMeshAgent>();
-            character = GetComponent<ThirdPersonCharacter>();
-            agent.updateRotation = false;
-            agent.updatePosition = true;
             ch = gameObject.GetComponent<NavMeshAgent>();
         }
 
 
 
         // Update is called once per frame
-        private void Update()
+        protected override void RealUpdate(GameObject player)
         {
-            target = player.position;
+            Transform target = player.transform;
             if (target != null)
             {
                 time += Time.deltaTime;
@@ -45,8 +37,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                     ch.speed = 11;
                     time = 0;
                 }
-                agent.SetDestination(target);
-                // use the values to move the character
+                agent.SetDestination(target.position);
                 character.Move(agent.desiredVelocity, false, false);
             }
 
