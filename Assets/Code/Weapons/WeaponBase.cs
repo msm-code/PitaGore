@@ -18,10 +18,9 @@ public abstract class WeaponBase : MonoBehaviour
     public void Shoot()
     {
         cooldownRemaining -= Time.deltaTime;
-        if (ammo > 0 && cooldownRemaining <= 0)
+        if (cooldownRemaining <= 0)
         {
             cooldownRemaining = ReloadTime;
-            ammo -= 1;
 
             RealShoot();
         }
