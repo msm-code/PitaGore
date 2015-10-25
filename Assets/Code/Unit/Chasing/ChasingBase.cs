@@ -1,20 +1,18 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityStandardAssets.Characters.ThirdPerson;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(ThirdPersonCharacter))]
 public abstract class ChasingBase : MonoBehaviour
 {
-    public NavMeshAgent agent { get; private set; } // the navmesh agent required for the path finding
-    public ThirdPersonCharacter character { get; private set; } // the character we are controlling
+    protected NavMeshAgent agent { get; private set; } // the navmesh agent required for the path finding
+    protected ThirdPersonCharacter character { get; private set; } // the character we are controlling
 
     public float sightRange = 100;
     public bool hasSightLimitation;
 
-    private void Start()
+    protected void Start()
     {
-        // get the components on the object we need ( should not be null due to require component so no need to check )
         agent = GetComponentInChildren<NavMeshAgent>();
         character = GetComponent<ThirdPersonCharacter>();
         agent.updateRotation = false;
@@ -39,7 +37,7 @@ public abstract class ChasingBase : MonoBehaviour
         if (player == null) { return; }
 
         var target = player.transform.position;
-        if (target != null && CanSeePlayer(target))
+        if (player.transform != null && CanSeePlayer(target))
         {
             RealUpdate(player);
         }

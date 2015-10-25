@@ -3,17 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityStandardAssets.Characters.FirstPerson;
 
-public class EffectManager : MonoBehaviour {
+public class EffectManager : MonoBehaviour
+{
     private bool timerStarted = false;
     private float timer = 0f;
     private float maxTime = 1f;
     List<Effect> effectsList = new List<Effect>();
     private Effect currentEffect;
-
-    // Use this for initialization
-    void Start () {
-	    
-	}
 
     public void StartEffect(Effect effect)
     {
@@ -25,7 +21,7 @@ public class EffectManager : MonoBehaviour {
     {
         effect.EndEffect();
         currentEffect = null;
-        
+
     }
 
     public void AddEffect(Effect effect)
@@ -45,7 +41,8 @@ public class EffectManager : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         if (this.timerStarted)
         {
             this.timer += Time.deltaTime;
