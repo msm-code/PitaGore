@@ -12,6 +12,9 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public Vector3 target; // target to aim for
         public Transform player;
 
+        public float sightRange = 100;
+        public bool hasSightLimitation;
+
         // Use this for initialization
         private void Start()
         {
@@ -27,7 +30,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         private void Update()
         {
             target = player.position;
-            if (target != null)
+            if (target != null && (!hasSightLimitation || Vector3.Distance(target, gameObject.transform.position) < sightRange))
             {
                 agent.SetDestination(target);
                 // use the values to move the character
