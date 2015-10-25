@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 4cc58bc7e56bc18409acff53025c561b
 timeCreated: 1445727020
+=======
+guid: c5da31899c849154994a62b5f76f8609
+timeCreated: 1445726870
+>>>>>>> Enemy sight range
 licenseType: Free
 DefaultImporter:
   userData: 
