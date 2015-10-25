@@ -5,27 +5,14 @@ namespace UnityStandardAssets.Characters.ThirdPerson
 {
     [RequireComponent(typeof(NavMeshAgent))]
     [RequireComponent(typeof(ThirdPersonCharacter))]
-    public class SlenderManChase : MonoBehaviour
+    public class SlenderManChase : ChasingBase
     {
-        public NavMeshAgent agent { get; private set; } // the navmesh agent required for the path finding
-        public ThirdPersonCharacter character { get; private set; } // the character we are controlling
-        public Vector3 target; // target to aim for
-        public Transform player;
         float radius = 2;
         float time = 0;
 
-        // Use this for initialization
-        private void Start()
-        {
-            // get the components on the object we need ( should not be null due to require component so no need to check )
-            agent = GetComponentInChildren<NavMeshAgent>();
-            character = GetComponent<ThirdPersonCharacter>();
-            agent.updateRotation = false;
-            agent.updatePosition = true;
-        }
-
         private void Teleport()
         {
+            Transform player = GetPlayer().transform;
             Vector3 spawnPos = new Vector3(UnityEngine.Random.Range(player.position .x - 20.0F, player.position.x + 20.0F), player.position.y+2, UnityEngine.Random.Range(player.position.z - 20.0F, player.position.z + 20.0F));
             if (Physics.CheckSphere(spawnPos, radius))
             {
@@ -39,9 +26,10 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         }
 
         // Update is called once per frame
-        private void Update()
+        protected override void RealUpdate(GameObject player)
         {
-            target = player.position;
+            Transform target = player.transform;
+
             if (target != null)
             {
                 time += Time.deltaTime;
@@ -49,7 +37,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
                 {
                     Teleport();
                 }
-                agent.SetDestination(target);
+                agent.SetDestination(target.position);
                 // use the values to move the character
                 character.Move(agent.desiredVelocity, false, false);
             }

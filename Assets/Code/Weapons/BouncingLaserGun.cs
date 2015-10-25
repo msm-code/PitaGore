@@ -7,13 +7,9 @@ public class BouncingLaserGun : GunBase
     public GameObject bulletTracePrefab;
     public GameObject hitPrefab;
 
-    private float damage = 20;
+    public float damage = 20;
 
-    public override int MaxAmmo { get { return 1000; } }
-
-    public override float ReloadTime { get { return 0.1f; } }
-
-    const int MAX_BOUNCES = 40;
+    public int maxBounces = 40;
 
     void SendBouncingRay(Ray ray, int maxBounces)
     {
@@ -83,7 +79,7 @@ public class BouncingLaserGun : GunBase
         {
             hitPoint = info.point;
             ray = new Ray(ray.origin, hitPoint - ray.origin);
-            SendBouncingRay(ray, MAX_BOUNCES);
+            SendBouncingRay(ray, maxBounces);
         }
         else { ShowBulletTrace(ray.origin, ray.origin + ray.direction * 10000); }
     }
