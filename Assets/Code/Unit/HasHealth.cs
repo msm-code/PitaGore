@@ -26,6 +26,17 @@ public class HasHealth : MonoBehaviour {
 
 
     void Die() {
-		Destroy(gameObject);
+        GameObject sceneManager = GameObject.Find("SceneManager");
+        if (gameObject.tag == "Player")
+        {
+            // player umiera
+            sceneManager.GetComponent<SceneManager>().playerDead();
+        }
+        else
+        {
+            // enemy umiera
+            sceneManager.GetComponent<SceneManager>().enemyKilled();
+            Destroy(gameObject);
+        }
 	}
 }
