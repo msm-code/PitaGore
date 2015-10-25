@@ -26,7 +26,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             {
                 if (hp.currentHp < hp.maxHealth)
                 {
-                    hp.currentHp += 0.2f;
+                    hp.currentHp += 0.5f;
                 }
                 agent.SetDestination(target.position);
                 character.Move(agent.desiredVelocity, false, false);
