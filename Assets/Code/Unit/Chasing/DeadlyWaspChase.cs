@@ -11,6 +11,7 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         public ThirdPersonCharacter character { get; private set; } // the character we are controlling
         public Vector3 target; // target to aim for
         public Transform player;
+        public ShootsAtPlayer EvilMagic;
 
         // Use this for initialization
         private void Start()
@@ -22,14 +23,13 @@ namespace UnityStandardAssets.Characters.ThirdPerson
             agent.updatePosition = true;
         }
 
-
-
         // Update is called once per frame
         private void Update()
         {
             target = player.position;
             if (target != null)
             {
+                EvilMagic.CastTheGreatestEverSeenGodDamnFireball();
                 agent.SetDestination(target);
                 // use the values to move the character
                 character.Move(agent.desiredVelocity, false, false);
