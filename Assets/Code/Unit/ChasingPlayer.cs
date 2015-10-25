@@ -26,11 +26,17 @@ namespace UnityStandardAssets.Characters.ThirdPerson
         }
 
 
+        bool CanSeePlayer()
+        {
+            return (!hasSightLimitation || Vector3.Distance(target, gameObject.transform.position) < sightRange);
+        }
+
+
         // Update is called once per frame
         private void Update()
         {
             target = player.position;
-            if (target != null && (!hasSightLimitation || Vector3.Distance(target, gameObject.transform.position) < sightRange))
+            if (target != null && CanSeePlayer())
             {
                 agent.SetDestination(target);
                 // use the values to move the character

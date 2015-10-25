@@ -2,28 +2,23 @@
 
 public abstract class WeaponBase : MonoBehaviour
 {
-    protected int ammo;
     float cooldownRemaining;
-
-    public abstract int MaxAmmo { get; }
-    public abstract float ReloadTime { get; }
-
-    void Start()
-    {
-        this.ammo = MaxAmmo;
-    }
+    public int ShotsAtOnce = 1;
+    public float ReloadTime = 0.05f;
 
     protected abstract void RealShoot();
 
     public void Shoot()
     {
         cooldownRemaining -= Time.deltaTime;
-        if (ammo > 0 && cooldownRemaining <= 0)
+        if (cooldownRemaining <= 0)
         {
             cooldownRemaining = ReloadTime;
-            ammo -= 1;
 
-            RealShoot();
+            for (int i = 0; i < ShotsAtOnce; i++)
+            {
+                RealShoot();
+            }
         }
     }
 }

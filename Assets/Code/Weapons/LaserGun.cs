@@ -7,11 +7,7 @@ public class LaserGun : GunBase
     public GameObject bulletTracePrefab;
     public GameObject hitPrefab;
 
-    private float damage = 20;
-
-    public override int MaxAmmo { get { return 1000; } }
-
-    public override float ReloadTime { get { return 0.1f; } }
+    public float damage = 20;
 
     protected override void SuperrealShot(Ray ray)
     {
