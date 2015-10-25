@@ -14,8 +14,12 @@ public class Enemy : MonoBehaviour {
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<HasHealth>().ReceiveDamage(this.damage);
-            time = 0;
+            time += Time.deltaTime;
+            if (time > 0.5)
+            {
+                collision.gameObject.GetComponent<HasHealth>().ReceiveDamage(this.damage);
+                time = 0;
+            }
         }
     }
 
